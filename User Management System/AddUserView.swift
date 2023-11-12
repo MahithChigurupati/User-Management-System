@@ -10,9 +10,9 @@ import SwiftUI
 struct AddUserView: View {
     // create variables to store user input values
     @State var firstName: String = ""
-    @State var lastName: String  = ""
-    @State var email: String     = ""
-    @State var phone: String     = ""
+    @State var lastName: String = ""
+    @State var email: String = ""
+    @State var phone: String = ""
 
     // to go back on the home screen when the user is added
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>

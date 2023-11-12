@@ -37,11 +37,11 @@ class DB_Manager {
             users = Table("users")
 
             // create instances of each column
-            id        = Expression<Int>("id")
+            id = Expression<Int>("id")
             firstName = Expression<String>("firstName")
-            lastName  = Expression<String>("lastName")
-            email     = Expression<String>("email")
-            phone     = Expression<String>("phone")
+            lastName = Expression<String>("lastName")
+            email = Expression<String>("email")
+            phone = Expression<String>("phone")
 
             // check if the user's table is already created
             if !UserDefaults.standard.bool(forKey: "is_db_created") {
@@ -71,58 +71,53 @@ class DB_Manager {
             print(error.localizedDescription)
         }
     }
-    
+
     // return array of user models
     public func getUsers() -> [UserModel] {
-         
         // create empty array
         var userModels: [UserModel] = []
-     
+
         // get all users in descending order
         users = users.order(id.desc)
-     
+
         // exception handling
         do {
-     
             // loop through all users
             for user in try db.prepare(users) {
-     
                 // create new model in each loop iteration
                 let userModel: UserModel = UserModel()
-     
+
                 // set values in model from database
                 userModel.id = user[id]
                 userModel.firstName = user[firstName]
                 userModel.lastName = user[lastName]
                 userModel.email = user[email]
                 userModel.phone = user[phone]
-     
+
                 // append in new array
                 userModels.append(userModel)
             }
         } catch {
             print(error.localizedDescription)
         }
-     
+
         // return array
         return userModels
     }
-    
+
     // get single user data
     public func getUser(idValue: Int) -> UserModel {
-     
         // create an empty object
         let userModel: UserModel = UserModel()
-         
+
         // exception handling
         do {
-     
             // get user using ID
             let user: AnySequence<Row> = try db.prepare(users.filter(id == idValue))
-     
+
             // get row
-            try user.forEach({ (rowValue) in
-     
+            try user.forEach({ rowValue in
+
                 // set values in model
                 userModel.id = try rowValue.get(id)
                 userModel.firstName = try rowValue.get(firstName)
@@ -133,19 +128,32 @@ class DB_Manager {
         } catch {
             print(error.localizedDescription)
         }
-     
+
         // return model
         return userModel
     }
-    
+
     // function to update user
     public func updateUser(idValue: Int, firstNameValue: String, lastNameValue: String, emailValue: String, phoneValue: String) {
         do {
             // get user using ID
             let user: Table = users.filter(id == idValue)
-             
+
             // run the update query
             try db.run(user.update(firstName <- firstNameValue, lastName <- lastNameValue, email <- emailValue, phone <- phoneValue))
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    // function to delete user
+    public func deleteUser(idValue: Int) {
+        do {
+            // get user using ID
+            let user: Table = users.filter(id == idValue)
+
+            // run the delete query
+            try db.run(user.delete())
         } catch {
             print(error.localizedDescription)
         }
