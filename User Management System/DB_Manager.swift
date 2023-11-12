@@ -71,4 +71,40 @@ class DB_Manager {
             print(error.localizedDescription)
         }
     }
+    
+    // return array of user models
+    public func getUsers() -> [UserModel] {
+         
+        // create empty array
+        var userModels: [UserModel] = []
+     
+        // get all users in descending order
+        users = users.order(id.desc)
+     
+        // exception handling
+        do {
+     
+            // loop through all users
+            for user in try db.prepare(users) {
+     
+                // create new model in each loop iteration
+                let userModel: UserModel = UserModel()
+     
+                // set values in model from database
+                userModel.id = user[id]
+                userModel.firstName = user[firstName]
+                userModel.lastName = user[lastName]
+                userModel.email = user[email]
+                userModel.phone = user[phone]
+     
+                // append in new array
+                userModels.append(userModel)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+     
+        // return array
+        return userModels
+    }
 }

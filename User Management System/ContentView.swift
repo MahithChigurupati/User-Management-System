@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // array of user models
+    @State var userModels: [UserModel] = []
+    
     var body: some View {
         // create navigation view
         NavigationView {
@@ -22,10 +26,28 @@ struct ContentView: View {
                     })
                 }
          
-                // list view goes here
+                // create list view to show all users
+                List (self.userModels) { (model) in
+                 
+                    // show name, email and age horizontally
+                    HStack {
+                        Text(model.firstName)
+                        Spacer()
+                        Text(model.lastName)
+                        Spacer()
+                        Text(model.email)
+                        Spacer()
+                        Text(model.phone)
+                        Spacer()
+                 
+                        // edit and delete button goes here
+                    }
+                }
          
             }.padding()
-            .navigationBarTitle("User Management")
+            .onAppear(perform: {
+                self.userModels = DB_Manager().getUsers()
+            })
         }
     }
 }
