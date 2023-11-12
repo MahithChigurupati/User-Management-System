@@ -107,4 +107,47 @@ class DB_Manager {
         // return array
         return userModels
     }
+    
+    // get single user data
+    public func getUser(idValue: Int) -> UserModel {
+     
+        // create an empty object
+        let userModel: UserModel = UserModel()
+         
+        // exception handling
+        do {
+     
+            // get user using ID
+            let user: AnySequence<Row> = try db.prepare(users.filter(id == idValue))
+     
+            // get row
+            try user.forEach({ (rowValue) in
+     
+                // set values in model
+                userModel.id = try rowValue.get(id)
+                userModel.firstName = try rowValue.get(firstName)
+                userModel.lastName = try rowValue.get(lastName)
+                userModel.email = try rowValue.get(email)
+                userModel.phone = try rowValue.get(phone)
+            })
+        } catch {
+            print(error.localizedDescription)
+        }
+     
+        // return model
+        return userModel
+    }
+    
+    // function to update user
+    public func updateUser(idValue: Int, firstNameValue: String, lastNameValue: String, emailValue: String, phoneValue: String) {
+        do {
+            // get user using ID
+            let user: Table = users.filter(id == idValue)
+             
+            // run the update query
+            try db.run(user.update(firstName <- firstNameValue, lastName <- lastNameValue, email <- emailValue, phone <- phoneValue))
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

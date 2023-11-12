@@ -14,6 +14,7 @@
 		2BF756012B008C2100DDBE37 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756002B008C2100DDBE37 /* UserModel.swift */; };
 		2BF756032B008C4F00DDBE37 /* DB_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756022B008C4F00DDBE37 /* DB_Manager.swift */; };
 		2BF756072B00904700DDBE37 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756062B00904700DDBE37 /* AddUserView.swift */; };
+		2BF756092B01571600DDBE37 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756082B01571600DDBE37 /* EditUserView.swift */; };
 		7B74C7BC49D450CC09AC4127 /* Pods_User_Management_System.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089384BE28911E5CF739A52C /* Pods_User_Management_System.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		2BF756002B008C2100DDBE37 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2BF756022B008C4F00DDBE37 /* DB_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Manager.swift; sourceTree = "<group>"; };
 		2BF756062B00904700DDBE37 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
+		2BF756082B01571600DDBE37 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
 		458F34B08BA90DC401681878 /* Pods-User Management System.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Management System.debug.xcconfig"; path = "Target Support Files/Pods-User Management System/Pods-User Management System.debug.xcconfig"; sourceTree = "<group>"; };
 		8D919ACDFCC48E30E044DBB3 /* Pods-User Management System.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Management System.release.xcconfig"; path = "Target Support Files/Pods-User Management System/Pods-User Management System.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 				2BF756002B008C2100DDBE37 /* UserModel.swift */,
 				2BF756022B008C4F00DDBE37 /* DB_Manager.swift */,
 				2BF756062B00904700DDBE37 /* AddUserView.swift */,
+				2BF756082B01571600DDBE37 /* EditUserView.swift */,
 			);
 			path = "User Management System";
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				2B83C8032B00769C00CCCAC0 /* ContentView.swift in Sources */,
 				2BF756012B008C2100DDBE37 /* UserModel.swift in Sources */,
 				2BF756072B00904700DDBE37 /* AddUserView.swift in Sources */,
+				2BF756092B01571600DDBE37 /* EditUserView.swift in Sources */,
 				2B83C8012B00769C00CCCAC0 /* User_Management_SystemApp.swift in Sources */,
 				2BF756032B008C4F00DDBE37 /* DB_Manager.swift in Sources */,
 			);
