@@ -13,6 +13,7 @@
 		2B83C8082B00769E00CCCAC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B83C8072B00769E00CCCAC0 /* Preview Assets.xcassets */; };
 		2BF756012B008C2100DDBE37 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756002B008C2100DDBE37 /* UserModel.swift */; };
 		2BF756032B008C4F00DDBE37 /* DB_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756022B008C4F00DDBE37 /* DB_Manager.swift */; };
+		2BF756072B00904700DDBE37 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756062B00904700DDBE37 /* AddUserView.swift */; };
 		7B74C7BC49D450CC09AC4127 /* Pods_User_Management_System.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089384BE28911E5CF739A52C /* Pods_User_Management_System.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		2B83C8072B00769E00CCCAC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2BF756002B008C2100DDBE37 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2BF756022B008C4F00DDBE37 /* DB_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Manager.swift; sourceTree = "<group>"; };
+		2BF756062B00904700DDBE37 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		458F34B08BA90DC401681878 /* Pods-User Management System.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Management System.debug.xcconfig"; path = "Target Support Files/Pods-User Management System/Pods-User Management System.debug.xcconfig"; sourceTree = "<group>"; };
 		8D919ACDFCC48E30E044DBB3 /* Pods-User Management System.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Management System.release.xcconfig"; path = "Target Support Files/Pods-User Management System/Pods-User Management System.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +70,7 @@
 				2B83C8062B00769E00CCCAC0 /* Preview Content */,
 				2BF756002B008C2100DDBE37 /* UserModel.swift */,
 				2BF756022B008C4F00DDBE37 /* DB_Manager.swift */,
+				2BF756062B00904700DDBE37 /* AddUserView.swift */,
 			);
 			path = "User Management System";
 			sourceTree = "<group>";
@@ -86,7 +89,6 @@
 				458F34B08BA90DC401681878 /* Pods-User Management System.debug.xcconfig */,
 				8D919ACDFCC48E30E044DBB3 /* Pods-User Management System.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -214,6 +216,7 @@
 			files = (
 				2B83C8032B00769C00CCCAC0 /* ContentView.swift in Sources */,
 				2BF756012B008C2100DDBE37 /* UserModel.swift in Sources */,
+				2BF756072B00904700DDBE37 /* AddUserView.swift in Sources */,
 				2B83C8012B00769C00CCCAC0 /* User_Management_SystemApp.swift in Sources */,
 				2BF756032B008C4F00DDBE37 /* DB_Manager.swift in Sources */,
 			);
@@ -259,7 +262,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -322,7 +325,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -9,13 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        // create navigation view
+        NavigationView {
+         
+            VStack {
+         
+                // create link to add user
+                HStack {
+                    Spacer()
+                    NavigationLink (destination: AddUserView(), label: {
+                        Text("Add user")
+                    })
+                }
+         
+                // list view goes here
+         
+            }.padding()
+            .navigationBarTitle("User Management")
         }
-        .padding()
     }
 }
 
