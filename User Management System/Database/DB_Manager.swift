@@ -6,7 +6,6 @@
 //
 
 import Foundation
-// import library
 import SQLite
 
 class DB_Manager {
@@ -37,11 +36,11 @@ class DB_Manager {
             users = Table("users")
 
             // create instances of each column
-            id = Expression<Int>("id")
+            id        = Expression<Int>("id")
             firstName = Expression<String>("firstName")
-            lastName = Expression<String>("lastName")
-            email = Expression<String>("email")
-            phone = Expression<String>("phone")
+            lastName  = Expression<String>("lastName")
+            email     = Expression<String>("email")
+            phone     = Expression<String>("phone")
 
             // check if the user's table is already created
             if !UserDefaults.standard.bool(forKey: "is_db_created") {
@@ -88,11 +87,11 @@ class DB_Manager {
                 let userModel: UserModel = UserModel()
 
                 // set values in model from database
-                userModel.id = user[id]
+                userModel.id        = user[id]
                 userModel.firstName = user[firstName]
-                userModel.lastName = user[lastName]
-                userModel.email = user[email]
-                userModel.phone = user[phone]
+                userModel.lastName  = user[lastName]
+                userModel.email     = user[email]
+                userModel.phone     = user[phone]
 
                 // append in new array
                 userModels.append(userModel)
@@ -119,11 +118,39 @@ class DB_Manager {
             try user.forEach({ rowValue in
 
                 // set values in model
-                userModel.id = try rowValue.get(id)
+                userModel.id        = try rowValue.get(id)
                 userModel.firstName = try rowValue.get(firstName)
-                userModel.lastName = try rowValue.get(lastName)
-                userModel.email = try rowValue.get(email)
-                userModel.phone = try rowValue.get(phone)
+                userModel.lastName  = try rowValue.get(lastName)
+                userModel.email     = try rowValue.get(email)
+                userModel.phone     = try rowValue.get(phone)
+            })
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        // return model
+        return userModel
+    }
+    
+    // get single user data
+    public func getUser(from emailValue: String) -> UserModel {
+        // create an empty object
+        let userModel: UserModel = UserModel()
+
+        // exception handling
+        do {
+            // get user using ID
+            let user: AnySequence<Row> = try db.prepare(users.filter(email == emailValue))
+
+            // get row
+            try user.forEach({ rowValue in
+
+                // set values in model
+                userModel.id        = try rowValue.get(id)
+                userModel.firstName = try rowValue.get(firstName)
+                userModel.lastName  = try rowValue.get(lastName)
+                userModel.email     = try rowValue.get(email)
+                userModel.phone     = try rowValue.get(phone)
             })
         } catch {
             print(error.localizedDescription)

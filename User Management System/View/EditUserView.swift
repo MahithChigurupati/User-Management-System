@@ -22,24 +22,32 @@ struct EditUserView: View {
 
     var body: some View {
         VStack {
+            // User symbol on top
+            Image(systemName: "person.badge.clock.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 80, height: 80)
+                .padding(40)
+                .foregroundColor(Color.blue)
+
             // create name field
             TextField("Enter first name", text: $firstName)
                 .padding(10)
-                .background(Color(.systemGray6))
+                .background(Color(.systemGray5))
                 .cornerRadius(5)
                 .disableAutocorrection(true)
 
             // create name field
             TextField("Enter last name", text: $lastName)
                 .padding(10)
-                .background(Color(.systemGray6))
+                .background(Color(.systemGray5))
                 .cornerRadius(5)
                 .disableAutocorrection(true)
 
             // create email field
             TextField("Enter email", text: $email)
                 .padding(10)
-                .background(Color(.systemGray6))
+                .background(Color(.systemGray5))
                 .cornerRadius(5)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
@@ -48,7 +56,7 @@ struct EditUserView: View {
             // create age field, number pad
             TextField("Enter phone", text: $phone)
                 .padding(10)
-                .background(Color(.systemGray6))
+                .background(Color(.systemGray5))
                 .cornerRadius(5)
                 .keyboardType(.numberPad)
                 .disableAutocorrection(true)
@@ -62,10 +70,14 @@ struct EditUserView: View {
                 self.mode.wrappedValue.dismiss()
             }, label: {
                 Text("Edit User")
+                    .foregroundColor(Color(.systemBackground))
             })
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 10)
+            .background(Color.blue)
+            .cornerRadius(8)
+            .padding()
         }.padding()
 
             // populate user's data in fields when view loaded
