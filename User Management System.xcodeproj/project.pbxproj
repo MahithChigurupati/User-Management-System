@@ -15,6 +15,8 @@
 		2BF756032B008C4F00DDBE37 /* DB_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756022B008C4F00DDBE37 /* DB_Manager.swift */; };
 		2BF756072B00904700DDBE37 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756062B00904700DDBE37 /* AddUserView.swift */; };
 		2BF756092B01571600DDBE37 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756082B01571600DDBE37 /* EditUserView.swift */; };
+		2BF7560B2B0281F300DDBE37 /* SearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7560A2B0281F300DDBE37 /* SearchUserView.swift */; };
+		2BF756112B02D93E00DDBE37 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF756102B02D93E00DDBE37 /* Utils.swift */; };
 		7B74C7BC49D450CC09AC4127 /* Pods_User_Management_System.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089384BE28911E5CF739A52C /* Pods_User_Management_System.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		2BF756022B008C4F00DDBE37 /* DB_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Manager.swift; sourceTree = "<group>"; };
 		2BF756062B00904700DDBE37 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		2BF756082B01571600DDBE37 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		2BF7560A2B0281F300DDBE37 /* SearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserView.swift; sourceTree = "<group>"; };
+		2BF756102B02D93E00DDBE37 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		458F34B08BA90DC401681878 /* Pods-User Management System.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Management System.debug.xcconfig"; path = "Target Support Files/Pods-User Management System/Pods-User Management System.debug.xcconfig"; sourceTree = "<group>"; };
 		8D919ACDFCC48E30E044DBB3 /* Pods-User Management System.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-User Management System.release.xcconfig"; path = "Target Support Files/Pods-User Management System/Pods-User Management System.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,14 +70,13 @@
 		2B83C7FF2B00769C00CCCAC0 /* User Management System */ = {
 			isa = PBXGroup;
 			children = (
+				2BF7560F2B02D92F00DDBE37 /* Utils */,
+				2BF7560D2B02D87600DDBE37 /* View */,
+				2BF7560C2B02D84E00DDBE37 /* Database */,
 				2B83C8002B00769C00CCCAC0 /* User_Management_SystemApp.swift */,
 				2B83C8022B00769C00CCCAC0 /* ContentView.swift */,
 				2B83C8042B00769E00CCCAC0 /* Assets.xcassets */,
 				2B83C8062B00769E00CCCAC0 /* Preview Content */,
-				2BF756002B008C2100DDBE37 /* UserModel.swift */,
-				2BF756022B008C4F00DDBE37 /* DB_Manager.swift */,
-				2BF756062B00904700DDBE37 /* AddUserView.swift */,
-				2BF756082B01571600DDBE37 /* EditUserView.swift */,
 			);
 			path = "User Management System";
 			sourceTree = "<group>";
@@ -84,6 +87,33 @@
 				2B83C8072B00769E00CCCAC0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2BF7560C2B02D84E00DDBE37 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2BF756002B008C2100DDBE37 /* UserModel.swift */,
+				2BF756022B008C4F00DDBE37 /* DB_Manager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		2BF7560D2B02D87600DDBE37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BF7560A2B0281F300DDBE37 /* SearchUserView.swift */,
+				2BF756062B00904700DDBE37 /* AddUserView.swift */,
+				2BF756082B01571600DDBE37 /* EditUserView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BF7560F2B02D92F00DDBE37 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2BF756102B02D93E00DDBE37 /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D1E6BAF40BE3A18BDDC42F76 /* Pods */ = {
@@ -222,7 +252,9 @@
 				2BF756072B00904700DDBE37 /* AddUserView.swift in Sources */,
 				2BF756092B01571600DDBE37 /* EditUserView.swift in Sources */,
 				2B83C8012B00769C00CCCAC0 /* User_Management_SystemApp.swift in Sources */,
+				2BF7560B2B0281F300DDBE37 /* SearchUserView.swift in Sources */,
 				2BF756032B008C4F00DDBE37 /* DB_Manager.swift in Sources */,
+				2BF756112B02D93E00DDBE37 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

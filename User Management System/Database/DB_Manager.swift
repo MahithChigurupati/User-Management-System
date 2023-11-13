@@ -133,9 +133,9 @@ class DB_Manager {
     }
     
     // get single user data
-    public func getUser(from emailValue: String) -> UserModel {
+    public func getUser(from emailValue: String) -> UserModel? {
         // create an empty object
-        let userModel: UserModel = UserModel()
+        var userModel: UserModel?
 
         // exception handling
         do {
@@ -144,13 +144,17 @@ class DB_Manager {
 
             // get row
             try user.forEach({ rowValue in
+                
+                if userModel == nil {
+                    userModel = UserModel()
+                }
 
                 // set values in model
-                userModel.id        = try rowValue.get(id)
-                userModel.firstName = try rowValue.get(firstName)
-                userModel.lastName  = try rowValue.get(lastName)
-                userModel.email     = try rowValue.get(email)
-                userModel.phone     = try rowValue.get(phone)
+                userModel?.id        = try rowValue.get(id)
+                userModel?.firstName = try rowValue.get(firstName)
+                userModel?.lastName  = try rowValue.get(lastName)
+                userModel?.email     = try rowValue.get(email)
+                userModel?.phone     = try rowValue.get(phone)
             })
         } catch {
             print(error.localizedDescription)

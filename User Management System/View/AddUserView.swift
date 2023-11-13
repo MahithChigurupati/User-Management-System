@@ -13,32 +13,22 @@ struct AddUserView: View {
     @State private var lastName: String = ""
     @State private var email: String = ""
     @State private var phone: String = ""
+    
+    // helper variables
     @State private var isEmailValid: Bool = true
     @State private var isPhoneValid: Bool = true
     @State private var isUserExist: Bool = false
+    
+    // for handling alerts
     @State private var showAlert = false
     @State private var showMessage = ""
     @State private var showTitle = ""
     
-
-    // to go back on the home screen when the user is added
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
-    private func isEmailExist (email: String) -> Bool {
-        let user: UserModel = DB_Manager().getUser(from: email)
-        return type(of: user) == UserModel.self
-    }
-
-    // Email validation using regular expression
-    private func isValidEmail(email: String) -> Bool {
-        let emailRegex = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$"#
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
-    }
-
-    // Phone number validation using regular expression
-    private func isValidPhone(phone: String) -> Bool {
-        let phoneRegex = #"^\d{10}$"#
-        return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phone)
+    func resetFields(){
+        self.firstName = ""
+        self.lastName = ""
+        self.email = ""
+        self.phone = ""
     }
 
     var body: some View {
@@ -76,11 +66,10 @@ struct AddUserView: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .onChange(of: email) { _, newEmail in
-                    isEmailValid = isValidEmail(email: newEmail)
+                    isEmailValid = Utils().isValidEmail(email: newEmail)
                 }
                 .foregroundColor(isEmailValid ? .primary : .red) // Change text color based on validation
             
-
             // create phone field with validation
             TextField("Enter Phone", text: $phone)
                 .padding(10)
@@ -89,12 +78,12 @@ struct AddUserView: View {
                 .keyboardType(.numberPad)
                 .disableAutocorrection(true)
                 .onChange(of: phone) { _, newPhone in
-                    isPhoneValid = isValidPhone(phone: newPhone)
+                    isPhoneValid = Utils().isValidPhone(phone: newPhone)
                 }
                 .foregroundColor(isPhoneValid ? .primary : .red) 
             
             
-            // Text message for invalid fields
+            // alert message for invalid fields
             if (!email.isEmpty && !isEmailValid) || (!phone.isEmpty && !isPhoneValid) {
                 Text("Please correct the fields")
                     .foregroundColor(.red)
@@ -104,32 +93,39 @@ struct AddUserView: View {
 
             // button to add a user
             Button(action: {
-                // Validate email and phone
-                isUserExist = isEmailExist(email: self.email)
-                
-                if !isUserExist {
-                    // call function to add row in sqlite database
-                    DB_Manager().addUser(firstNameValue: self.firstName,
-                                         lastNameValue: self.lastName,
-                                         emailValue: self.email,
-                                         phoneValue: self.phone)
+                // check if text fields have data
+                if(self.firstName == "" || self.lastName == "" || self.email == "" || self.phone == ""){
+                    self.showAlert   = true
+                    self.showTitle   = "Error"
+                    self.showMessage = "All Fields are Required"
+                }
+                else{
+                    // Validate email and phone
+                    isUserExist = (Utils().isEmailExist(email: self.email) != nil)
+                    
+                    if !isUserExist {
+                        // call function to add row in sqlite database
+                        DB_Manager().addUser(firstNameValue: self.firstName,
+                                             lastNameValue: self.lastName,
+                                             emailValue: self.email,
+                                             phoneValue: self.phone)
+                            
+                        resetFields()
 
-                    // Reset text fields
-                    self.firstName = ""
-                    self.lastName = ""
-                    self.email = ""
-                    self.phone = ""
+                        self.showAlert   = true
+                        self.showTitle   = "Success"
+                        self.showMessage = "User successfully created."
 
-                    self.showAlert = true
-                    self.showTitle = "User Created"
-                    self.showMessage = "The user has been successfully created."
-
-                }else{
-                    self.showAlert = true
-                    self.showTitle = "Error"
-                    self.showMessage = "User with Email exist"
+                    }else{
+                        self.showAlert   = true
+                        self.showTitle   = "Error"
+                        self.showMessage = "User with Email exist"
+                        
+                    }
                     
                 }
+                
+                
             }, label: {
                 Text("Add User")
                     .foregroundColor(Color(.systemBackground))
@@ -144,19 +140,15 @@ struct AddUserView: View {
                 Alert(
                     title: Text(showTitle),
                     message: Text(showMessage),
-                    dismissButton: .default(Text("OK"))
+                    dismissButton: .default(Text("OK"), action: {
+                        showAlert = false
+                    })
                 )
                 
             }
         }
         .padding()
-        .onAppear {
-                    // Reset text fields when the view appears
-                    self.firstName = ""
-                    self.lastName = ""
-                    self.email = ""
-                    self.phone = ""
-                }
+        .onAppear { resetFields() }
     }
 }
 
